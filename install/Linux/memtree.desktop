@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Memtree
+Comment=A Modern Memory Monitor Tool
+GenericName=Memory Monitor
+Exec=/usr/local/bin/memtree
+Icon=/usr/share/icons/memtree.png
+Type=Application
+Categories=System;Utility;
