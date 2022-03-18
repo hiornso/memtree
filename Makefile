@@ -15,12 +15,15 @@ BUILD_DIR ?= build
 
 SRCS = main.c caching.c table.c tablesearch.c tablesort.c label.c backends/$(OS)/getapps.c backends/$(OS)/backend.c resources.c
 OBJS = $(patsubst %.c,$(BUILD_DIR)/%.o,$(SRCS))
+DEPS = $(patsubst %.c,$(BUILD_DIR)/%.d,$(SRCS))
 
 TARGET ?= memtree
 
 .PHONY: default all clean
 default: $(TARGET)
 all: $(TARGET)
+
+-include $(DEPS)
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
