@@ -1,0 +1,19 @@
+levelbar block.filled.low {
+	background-color: rgb(0, 255, 0);
+	border-color: rgb(0, 255, 0);
+}
+
+levelbar block.filled.low-mid {
+	background-color: rgb(255, 200, 0);
+	border-color: rgb(255, 200, 0);
+}
+
+levelbar block.filled.high-mid {
+	background-color: rgb(255, 165, 0);
+	border-color: rgb(255, 165, 0);
+}
+
+levelbar block.filled.high {
+	background-color: rgb(255, 0, 0);
+	border-color: rgb(255, 0, 0);
+}

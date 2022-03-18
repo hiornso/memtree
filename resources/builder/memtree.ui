@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkTreeStore" id="programs_tree">
+    <columns>
+      <column type="gchararray"/>
+      <column type="gchararray"/>
+      <column type="gint"/>
+      
+      <column type="glong"/>
+      <column type="glong"/>
+      <column type="glong"/>
+      
+      <column type="glong"/>
+      <column type="glong"/>
+      
+      <column type="glong"/>
+      <column type="glong"/>
+    </columns>
+  </object>
+
+  <object class="GtkApplicationWindow" id="memtree_window">
+    <property name="title">Memtree</property>
+    <property name="default-width">1400</property>
+    <property name="default-height">800</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkSearchBar">
+            <property name="key-capture-widget">memtree_window</property>
+            <property name="hexpand">true</property> 
+            <child>
+              <object class="GtkSearchEntry" id="search-entry">
+              
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <property name="spacing">10</property>
+            <property name="margin-top">2</property>
+            <property name="margin-bottom">2</property>
+            <property name="margin-start">5</property>
+            <property name="margin-end">5</property>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <property name="hexpand">true</property>
+                <child>
+                  <object class="GtkLevelBar" id="memory-levelbar">
+                    <property name="min-value">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="memory-usage-label">
+                    <property name="label">System Memory Usage</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <property name="hexpand">true</property>
+                <child>
+                  <object class="GtkLevelBar" id="swap-levelbar">
+                    <property name="min-value">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="swap-usage-label">
+                    <property name="label">System Swap Usage</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <!--property name="hscrollbar-policy">never</property-->
+            <property name="vexpand">true</property>
+            <child>
+              <object class="GtkTreeView" id="treeview">
+                <property name="model">programs_tree</property>
+                <property name="enable-tree-lines">true</property>
+                <property name="enable-grid-lines">vertical</property>
+                <property name="enable-search">false</property>
+                <property name="search-column">0</property>
+                <child>
+                  <object class="GtkTreeViewColumn" id="procname">
+                    <property name="title">Program Name</property>
+                    <property name="resizable">true</property>
+                    <property name="reorderable">false</property>
+                    <property name="sort-column-id">0</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="procname-renderer"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="executable">
+                    <property name="title">Executable</property>
+                    <property name="resizable">true</property>
+                    <property name="reorderable">false</property>
+                    <property name="sort-column-id">1</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="executable-renderer"/>
+                      <attributes>
+                        <attribute name="text">1</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="pid">
+                    <property name="title">PID</property>
+                    <property name="resizable">true</property>
+                    <property name="reorderable">false</property>
+                    <property name="sort-column-id">2</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="pid-renderer"/>
+                      <attributes>
+                        <attribute name="text">2</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                
+                <child>
+                  <object class="GtkTreeViewColumn" id="uss">
+                    <property name="title">USS (kB)</property>
+                    <property name="resizable">true</property>
+                    <property name="reorderable">false</property>
+                    <property name="sort-column-id">3</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="uss-renderer"/>
+                      <attributes>
+                        <attribute name="text">3</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="pss">
+                    <property name="title">PSS (kB)</property>
+                    <property name="resizable">true</property>
+                    <property name="reorderable">false</property>
+                    <property name="sort-column-id">4</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="pss-renderer"/>
+                      <attributes>
+                        <attribute name="text">4</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="rss">
+                    <property name="title">RSS (kB)</property>
+                    <property name="resizable">true</property>
+                    <property name="reorderable">false</property>
+                    <property name="sort-column-id">5</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="rss-renderer"/>
+                      <attributes>
+                        <attribute name="text">5</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                
+                <child>
+                  <object class="GtkTreeViewColumn" id="swap">
+                    <property name="title">Swap (kB)</property>
+                    <property name="resizable">true</property>
+                    <property name="reorderable">false</property>
+                    <property name="sort-column-id">6</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="swap-renderer"/>
+                      <attributes>
+                        <attribute name="text">6</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="swap-pss">
+                    <property name="title">Swap PSS (kB)</property>
+                    <property name="resizable">true</property>
+                    <property name="reorderable">false</property>
+                    <property name="sort-column-id">7</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="swap-pss-renderer"/>
+                      <attributes>
+                        <attribute name="text">7</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                
+                <child>
+                  <object class="GtkTreeViewColumn" id="est-total-uss">
+                    <property name="title">Total USS (Estimated, kB)</property>
+                    <property name="resizable">true</property>
+                    <property name="reorderable">false</property>
+                    <property name="sort-column-id">8</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="est-total-uss-renderer"/>
+                      <attributes>
+                        <attribute name="text">8</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="total-pss">
+                    <property name="title">Total PSS (kB)</property>
+                    <property name="resizable">true</property>
+                    <property name="reorderable">false</property>
+                    <property name="sort-column-id">9</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="total-pss-renderer"/>
+                      <attributes>
+                        <attribute name="text">9</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

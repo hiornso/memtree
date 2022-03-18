@@ -1,0 +1,7 @@
+- Add submenu of booleans
+	- Toggle flat/tree view
+	- Toggle self/recursive usage
+- macOS backend
+- add CPU overview?
+- help window
+	- update README to mention that explanations can also be found in help window

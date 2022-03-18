@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/builder">
+    <file compressed="true" preprocess="xml-stripblanks" alias="memtree.ui">resources/builder/memtree.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="menu.ui">resources/builder/menu.ui</file>
+  </gresource>
+  <gresource prefix="/css">
+    <file compressed="true" alias="systemlevelbar.css">resources/css/systemlevelbar.css</file>
+  </gresource>
+  <gresource prefix="/images/logo">
+    <file compressed="true" alias="logo.png">resources/images/logo/logo.png</file>
+  </gresource>
+</gresources>
