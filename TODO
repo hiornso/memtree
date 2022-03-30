@@ -5,3 +5,4 @@
 - add CPU overview?
 - help window
 	- update README to mention that explanations can also be found in help window
+- optimise backend by keeping files open
