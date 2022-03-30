@@ -5,6 +5,7 @@
 #include "caching.h"
 #include "backend.h"
 
+static bool first = true;
 static pthread_t tid;
 static bool thread_done = false;
 static PInfo *thread_pinfos = NULL;
@@ -50,9 +51,7 @@ static void* thread_parse_proc(__attribute__((unused)) void *data)
 }
 
 int queue_cache_update()
-{
-	static bool first = true;
-	
+{	
 	if (!first) {
 		atomic_thread_fence(memory_order_acquire); // get updates from worker thread
 		if (thread_done) {
@@ -81,7 +80,7 @@ void deinit_cache() // to be called only when the cache will never be used again
 	free_parsed(cached_pinfos);
 	
 	atomic_thread_fence(memory_order_acquire); // get updates from worker thread
-	if (!thread_done) {
+	if (!first && !thread_done) {
 		pthread_join(tid, NULL);
 		
 		free_parsed(thread_pinfos);
