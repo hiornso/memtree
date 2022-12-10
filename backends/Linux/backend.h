@@ -24,6 +24,7 @@ typedef struct process_info {
 	GtkTreeIter iter;
 } PInfo;
 
+int init_backend();
 void free_parsed(PInfo *pinfos);
 PInfo* copy_parsed(PInfo *pinfos, const size_t len);
 long find_pid(PInfo *pinfos, const pid_t pid, const size_t len);

@@ -4,6 +4,7 @@
 #include <string.h>
 #include <assert.h>
 #include <unistd.h>
+#include <sys/utsname.h>
 
 #include "backend.h"
 
@@ -14,6 +15,27 @@
 #else
 #define cprintf(...) printf(__VA_ARGS__)
 #endif
+
+static int linux_major_version = -1;
+
+int init_backend() {
+	struct utsname sys_info;
+	if (uname(&sys_info) != 0) {
+		printf("Error: failed to get system info with uname syscall. This means the backend cannot be initialised. Exiting...\n");
+		return -1;
+	}
+	
+	if (strcmp(sys_info.sysname, "Linux") != 0) {
+		printf("Error: this program was compiled for Linux, but is not being run on Linux! As such, the backend cannot be initialised. Exiting...\n");
+		return -2;
+	}
+	
+	int linux_minor_version, linux_micro_version;
+	sscanf(sys_info.release, "%i.%i.%i", &linux_major_version, &linux_minor_version, &linux_micro_version);
+	printf("Using Linux backend, on Linux v%i.%i.%i. (Release %s)\n", linux_major_version, linux_minor_version, linux_micro_version, sys_info.release);
+	
+	return 0;
+}
 
 void free_parsed(PInfo *pinfos)
 {
@@ -198,9 +220,11 @@ PInfo *parse_proc(size_t *len)
 					ret[i].no_mem_info = true;
 					fclose(f);
 				} else {
+					// TODO: make this seek-based rather than skip-based, so that it does not break when new fields are added to this file
 					skipline(f); // 1234000-5678000 ---p 00000000 00:00 0
 					fscanf(f, "Rss: %li kB\n", &rss);
 					fscanf(f, "Pss: %li kB\n", &pss);
+					if (linux_major_version >= 6) skipline(f); // Pss_Dirty (new in linux 6.0)
 					skipline(f); // Pss_Anon
 					skipline(f); // Pss_File
 					skipline(f); // Pss_Shmem

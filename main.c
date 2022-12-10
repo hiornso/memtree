@@ -317,6 +317,8 @@ static int handle_local_cmdline_args(__attribute__ ((unused)) GApplication *appl
 
 int main(int argc, char *argv[])
 {
+	if (init_backend() != 0) return -1;
+	
 	GtkApplication *app = gtk_application_new(MEMTREE_APPLICATION_ID, G_APPLICATION_FLAGS_NONE);
 	
 	CmdLineOptions cmd_line_options = (CmdLineOptions){FALSE};
