@@ -319,7 +319,7 @@ int main(int argc, char *argv[])
 {
 	if (init_backend() != 0) return -1;
 	
-	GtkApplication *app = gtk_application_new(MEMTREE_APPLICATION_ID, G_APPLICATION_FLAGS_NONE);
+	GtkApplication *app = gtk_application_new(MEMTREE_APPLICATION_ID, G_APPLICATION_DEFAULT_FLAGS);
 	
 	CmdLineOptions cmd_line_options = (CmdLineOptions){FALSE};
 	const GOptionEntry options[] = {
