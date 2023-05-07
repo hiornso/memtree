@@ -340,6 +340,7 @@ SystemMemInfo get_system_memory_info()
 		return ret;
 	}
 	
+	// NB: even though the file says "kB" it's actually in KiB. They won't fix it for backwards compatibility reasons.
 	fscanf(f, "MemTotal: %li kB\n", &ret.mem_total);
 	skipline(f); // MemFree
 	fscanf(f, "MemAvailable: %li kB\n", &ret.mem_available);
@@ -359,7 +360,7 @@ SystemMemInfo get_system_memory_info()
 	
 	fclose(f);
 	
-	cprintf("Memory: %li/%li kB\tSwap: %li/%li kB\n", ret.mem_total - ret.mem_available, ret.mem_total, ret.swap_total - ret.swap_free, ret.swap_total);
+	cprintf("Memory: %li/%li KiB\tSwap: %li/%li KiB\n", ret.mem_total - ret.mem_available, ret.mem_total, ret.swap_total - ret.swap_free, ret.swap_total);
 	
 	return ret;
 }

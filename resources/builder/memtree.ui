@@ -135,7 +135,7 @@
                 
                 <child>
                   <object class="GtkTreeViewColumn" id="uss">
-                    <property name="title">USS (kB)</property>
+                    <property name="title">USS (KiB)</property>
                     <property name="resizable">true</property>
                     <property name="reorderable">false</property>
                     <property name="sort-column-id">3</property>
@@ -149,7 +149,7 @@
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="pss">
-                    <property name="title">PSS (kB)</property>
+                    <property name="title">PSS (KiB)</property>
                     <property name="resizable">true</property>
                     <property name="reorderable">false</property>
                     <property name="sort-column-id">4</property>
@@ -163,7 +163,7 @@
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="rss">
-                    <property name="title">RSS (kB)</property>
+                    <property name="title">RSS (KiB)</property>
                     <property name="resizable">true</property>
                     <property name="reorderable">false</property>
                     <property name="sort-column-id">5</property>
@@ -178,7 +178,7 @@
                 
                 <child>
                   <object class="GtkTreeViewColumn" id="swap">
-                    <property name="title">Swap (kB)</property>
+                    <property name="title">Swap (KiB)</property>
                     <property name="resizable">true</property>
                     <property name="reorderable">false</property>
                     <property name="sort-column-id">6</property>
@@ -192,7 +192,7 @@
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="swap-pss">
-                    <property name="title">Swap PSS (kB)</property>
+                    <property name="title">Swap PSS (KiB)</property>
                     <property name="resizable">true</property>
                     <property name="reorderable">false</property>
                     <property name="sort-column-id">7</property>
@@ -207,7 +207,7 @@
                 
                 <child>
                   <object class="GtkTreeViewColumn" id="est-total-uss">
-                    <property name="title">Total USS (Estimated, kB)</property>
+                    <property name="title">Total USS (Estimated, KiB)</property>
                     <property name="resizable">true</property>
                     <property name="reorderable">false</property>
                     <property name="sort-column-id">8</property>
@@ -221,7 +221,7 @@
                 </child>
                 <child>
                   <object class="GtkTreeViewColumn" id="total-pss">
-                    <property name="title">Total PSS (kB)</property>
+                    <property name="title">Total PSS (KiB)</property>
                     <property name="resizable">true</property>
                     <property name="reorderable">false</property>
                     <property name="sort-column-id">9</property>
